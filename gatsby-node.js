@@ -4,7 +4,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
-    const newsArticleTemplate = path.resolve('src/pages/news-article.js');
+    const newsArticleTemplate = path.resolve('src/templates/news-article.js');
     resolve(
       graphql(
         `
