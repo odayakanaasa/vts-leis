@@ -1,4 +1,18 @@
 {
-  "extends": ["react-tools", "prettier"],
-  "plugins": ["prettier", "prettier/react"]
+  "extends": ["react-tools", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "graphql": true
+  }
 }
