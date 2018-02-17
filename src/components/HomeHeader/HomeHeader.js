@@ -26,7 +26,6 @@ const TextWrap = styled.div`
 
 const HomeHeader = () => (
   <Wrap>
-    <Navigation isHome />
     <Main>
       <img src={headerImg} alt="intro robot" />
       <TextWrap>
