@@ -28,14 +28,14 @@ class TemplateWrapper extends Component {
     isHome: false
   };
 
-  componentWillMount() {
-    if (typeof window !== 'undefined') {
-      const isHome = window.location.pathname === '/';
+  componentWillReceiveProps(nextProps) {
+    const { location } = nextProps;
 
-      this.setState({
-        isHome
-      });
-    }
+    const isHome = location.pathname === '/';
+
+    this.setState({
+      isHome
+    });
   }
 
   render() {
@@ -49,8 +49,8 @@ class TemplateWrapper extends Component {
           <title>{data.site.siteMetadata.title}</title>
           <link href={data.site.siteMetadata.fonts} rel="stylesheet" />
         </Helmet>
-        {!isHome && <Navigation isHome={isHome} />}
-        <div style={{ height: '800px' }}>{children()}</div>
+        <Navigation isHome={isHome} />
+        {children()}
         <Footer />
       </div>
     );
