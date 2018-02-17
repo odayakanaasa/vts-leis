@@ -10,7 +10,7 @@ const Main = styled.div`
   color: #fff;
 
   img {
-    width: 400px;
+    width: 350px;
   }
 `;
 
