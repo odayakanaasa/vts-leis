@@ -24,10 +24,23 @@ injectGlobal`
 `;
 
 class TemplateWrapper extends Component {
-  render() {
-    const isHome = window.location.pathname === '/';
+  state = {
+    isHome: false
+  };
 
+  componentWillMount() {
+    if (typeof window !== 'undefined') {
+      const isHome = window.location.pathname === '/';
+
+      this.setState({
+        isHome
+      });
+    }
+  }
+
+  render() {
     const { children, data } = this.props;
+    const { isHome } = this.state;
 
     return (
       <div>
