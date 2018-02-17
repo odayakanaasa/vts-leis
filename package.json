@@ -20,13 +20,15 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "make:svg": "yarn svgr --single-quote -d ./src/components/icons ./src/assets"
   },
   "devDependencies": {
     "dotenv": "^5.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-react-tools": "^1.1.2",
     "eslint-plugin-prettier": "^2.6.0",
-    "prettier": "^1.10.2"
+    "prettier": "^1.10.2",
+    "svgr": "^1.8.1"
   }
 }

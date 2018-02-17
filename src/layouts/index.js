@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { injectGlobal } from 'styled-components';
 import normalize from 'styled-normalize';
+
+import Footer from '../components/Footer';
+import Navigation from '../components/Navigation';
 
 injectGlobal`
   ${normalize}
@@ -20,16 +23,39 @@ injectGlobal`
   }
 `;
 
-const TemplateWrapper = ({ children, data }) => (
-  <div>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>{data.site.siteMetadata.title}</title>
-      <link href={data.site.siteMetadata.fonts} rel="stylesheet" />
-    </Helmet>
-    {children()}
-  </div>
-);
+class TemplateWrapper extends Component {
+  state = {
+    isHome: false
+  };
+
+  componentWillMount() {
+    if (typeof window !== 'undefined') {
+      const isHome = window.location.pathname === '/';
+
+      this.setState({
+        isHome
+      });
+    }
+  }
+
+  render() {
+    const { children, data } = this.props;
+    const { isHome } = this.state;
+
+    return (
+      <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{data.site.siteMetadata.title}</title>
+          <link href={data.site.siteMetadata.fonts} rel="stylesheet" />
+        </Helmet>
+        {!isHome && <Navigation isHome={isHome} />}
+        <div style={{ height: '800px' }}>{children()}</div>
+        <Footer />
+      </div>
+    );
+  }
+}
 export default TemplateWrapper;
 
 export const query = graphql`
